@@ -24,10 +24,13 @@ class ViewController: UIViewController {
     }
     
     func openKindle() {
-        let url = URL(string: "kindle://")!
+        let appUrl = URL(string: "kindle://")!
+        let iTunesUrl = URL(string: "itms-apps://itunes.apple.com/app/id302584613")!
         
-        if UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        if UIApplication.shared.canOpenURL(appUrl) {
+            UIApplication.shared.open(appUrl, options: [:])
+        } else if UIApplication.shared.canOpenURL(iTunesUrl) {
+            UIApplication.shared.open(iTunesUrl, options: [:])
         } else {
             imageView?.isHidden = true
             label?.isHidden = false
